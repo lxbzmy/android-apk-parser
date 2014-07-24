@@ -1,0 +1,6 @@
+4.4.2(KITKAT 19)
+include com.android.internal.R.java
+android.R.java
+framework-res.apk
+AndroidManifest.xml
+resources.arsc
