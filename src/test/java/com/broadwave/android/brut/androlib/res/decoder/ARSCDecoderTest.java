@@ -22,7 +22,7 @@ public class ARSCDecoderTest {
     public void test() throws FileNotFoundException, AndrolibException {
 
         InputStream arscStream = new FileInputStream(new File(
-                "E:/workspace4/axml/src/test/resources/resources.arsc"));
+                "src/main/resources/com/broadwave/android/android/resources.arsc"));
         ARSCData decode = ARSCDecoder.decode(arscStream, true, true);
 
         ResTable resTable = decode.getResTable();
