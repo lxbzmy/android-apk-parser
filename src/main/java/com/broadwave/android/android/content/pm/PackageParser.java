@@ -819,6 +819,7 @@ public class PackageParser {
         } catch (Exception e) {
             errorException = e;
             mParseError = PackageManager.INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION;
+            throw new RuntimeException(e);
         }
 
         if (pkg == null) {

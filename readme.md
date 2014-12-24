@@ -1,35 +1,25 @@
-Android APK Parser.
+Android APK Parser
 ========================
 
 Use Android Interface and other tools to parse APK file get manifest.
 使用android api 做原型实现的APK包解析,用于J2SE环境中读取APK做验证。
 
-Feature:
+Feature
 -------------
 
-- decode manifest.xml
-- decode resources.
+- decode manifest.xml in apk.
+- decode resources. in apk.
 - build PackageInfo.
-- get ic_lanucher.png as BuffererdImage.
+- get lanucher icon from manifest and resources and to BuffererdImage.
 
 Dependence
 -------------
-- copy some Android 4.2.2 API,平台的API基于4.2.2（KikKat,API19）.
-- eg. com.android.interal.R android.R
-- set screen resolution as max.屏幕分辨率假定为最高值。
-- pass Locale in constructor.在构造的时候设置好。
-
-
-TODO
--------------
-- AndroidManifest.xml
-- ICON
-- locallization app name
-- Signature
+- some AOSP(4.2.2 KikKat,API19) code `com.broadwave.android.android`.
+- [android-apktool][1] repacket to `com.broadwave.android.brut`.
+- axml util from Android4ME repacket to `com.broadwave.android.util.axml`.
 
 example
 --------------
-
 
     import com.broadwave.android.util.PackageParserUtil.PackageParserUtil()
     import com.broadwave.android.content.pm.PackageInfo;
@@ -46,6 +36,7 @@ example
     assertThat(info.applicationInfo.localizedLabel.toString(),
             equalTo("终端模拟器"));
     assertThat(info.applicationInfo.iconImage.getWidth(null), equalTo(96));//icon
+see `PackageParserUtilTest.java` for more.
 
 License
 ------------
@@ -62,3 +53,6 @@ License
      *  See the License for the specific language governing permissions and
      *  limitations under the License.
      */
+
+[1]: https://code.google.com/p/android-apktool
+[2]:

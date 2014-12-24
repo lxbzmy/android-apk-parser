@@ -39,6 +39,7 @@ import com.broadwave.android.brut.androlib.res.data.ResType;
 import com.broadwave.android.brut.androlib.res.data.value.ResBagValue;
 import com.broadwave.android.brut.androlib.res.data.value.ResBoolValue;
 import com.broadwave.android.brut.androlib.res.data.value.ResScalarValue;
+import com.broadwave.android.brut.androlib.res.data.value.ResStringValue;
 import com.broadwave.android.brut.androlib.res.data.value.ResValue;
 import com.broadwave.android.brut.androlib.res.data.value.ResValueFactory;
 import com.broadwave.android.brut.util.Duo;
@@ -224,8 +225,16 @@ public class ARSCDecoder {
         ResValueFactory factory = mPkg.getValueFactory();
         Duo<Integer, ResScalarValue>[] items = new Duo[count];
         for (int i = 0; i < count; i++) {
-            items[i] = new Duo<Integer, ResScalarValue>(mIn.readInt(),
-                    (ResScalarValue) readValue());
+            int idx = mIn.readInt();
+            ResValue value = readValue();
+            try {
+                items[i] = new Duo<Integer, ResScalarValue>(idx,
+                        (ResScalarValue)value);
+            } catch (ClassCastException e) {
+                items[i] = new Duo<Integer, ResScalarValue>(idx,
+                        new ResStringValue(String.valueOf(value)));
+                //see:https://code.google.com/p/android-apktool/issues/detail?id=329
+            }
         }
 
         return factory.bagFactory(parent, items);

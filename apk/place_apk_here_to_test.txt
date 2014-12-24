@@ -1,1 +1,0 @@
-apk(s) in this folder will under junit test.

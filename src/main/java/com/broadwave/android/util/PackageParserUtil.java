@@ -43,8 +43,13 @@ public class PackageParserUtil {
         PackageParser packageParser = null;
         try {
             packageParser = new PackageParser(apk.getCanonicalPath());
-            PackageParser.Package info0 = packageParser.parsePackage(apk, null,
-                    null, PackageParser.PARSE_MUST_BE_APK);
+            PackageParser.Package info0;
+            try {
+                info0 = packageParser.parsePackage(apk, null, null,
+                        PackageParser.PARSE_MUST_BE_APK);
+            } catch (RuntimeException e) {
+                throw new ParseException("Package parse exception", e);
+            }
 
             // basic attribute from manifest tag
             com.broadwave.android.android.content.pm.PackageInfo info = PackageParser

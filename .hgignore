@@ -1,0 +1,24 @@
+syntax: glob
+*.class
+target/*
+overlays/*
+.idea/*
+*.iml
+.classpath
+.project
+.settings
+.externalToolBuilders
+.springBeans
+*.orig
+Thumbs.db
+.factorypath
+src/main/resources/config/codegen.properties
+src/main/webapp/WEB-INF/config.properties
+syntax: regexp
+^build\.number$
+syntax: regexp
+^src/main/webapp/WEB-INF/keys/private\.bin$
+syntax: regexp
+^src/main/webapp/WEB-INF/keys/public\.bin$
+syntax: regexp
+^apk$

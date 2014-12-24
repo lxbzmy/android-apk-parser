@@ -53,6 +53,7 @@ public class PackageParserUtilTest {
             System.out.print(item.getName()+":");
             PackageParserUtil util = new PackageParserUtil();
             PackageInfo info = util.parsePackageInfo(item);
+            System.out.println(info.applicationInfo.localizedLabel);
             System.out.println(info.packageName + "," + info.versionCode + ","
                     + info.versionName);
         }
